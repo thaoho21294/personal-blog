@@ -1,9 +1,14 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const path = require("path");
+const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const fs = require('fs')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
+// Make sure any symlinks in the project folder are resolved:
+// https://github.com/facebook/create-react-app/issues/637
+const appDirectory = fs.realpathSync(process.cwd())
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 module.exports = () => {
   return {
@@ -13,14 +18,18 @@ module.exports = () => {
     mode: isDevelopment ? 'development' : 'production',
     output: {
       filename: isDevelopment ? '[name].js' : '[name].[hash].js',
-      path: path.resolve(__dirname, "dist"),
+      path: path.resolve(__dirname, 'dist')
     },
     module: {
       rules: [
         {
-          test: /\.(t|j)sx?$/,
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          include: resolveApp('src'),
           loader: 'babel-loader',
-          exclude: /node_modules/
+          options: {
+            cacheDirectory: true,
+            cacheCompression: !isDevelopment
+          }
         },
         {
           test: /\.html$/,
@@ -36,12 +45,7 @@ module.exports = () => {
           use: [
             isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: isDevelopment
-              }
-            }
+            'sass-loader'
           ]
         },
         {

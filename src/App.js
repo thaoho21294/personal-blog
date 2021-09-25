@@ -1,6 +1,12 @@
 import React from 'react'
 import logo from './logo.svg';
 import './App.scss';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+library.add(fab, faCheckSquare, faCoffee)
 
 function App() {
   return (
@@ -18,6 +24,10 @@ function App() {
         >
           Learn React
         </a>
+        <div>
+          <FontAwesomeIcon icon="check-square" />
+          Your <FontAwesomeIcon icon="coffee" /> is hot and ready!
+        </div>
       </header>
     </div>
   );
