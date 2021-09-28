@@ -4,13 +4,15 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const fs = require('fs')
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 module.exports = () => {
+  const isDevelopment = process.env.NODE_ENV === 'development'
+  const isProduction = process.env.NODE_ENV === 'production'
+
   return {
     devServer: {
       port: 9000
@@ -28,7 +30,7 @@ module.exports = () => {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            cacheCompression: !isDevelopment
+            cacheCompression: isProduction
           }
         },
         {
@@ -36,7 +38,7 @@ module.exports = () => {
           use: [
             {
               loader: 'html-loader',
-              options: { minimize: !isDevelopment }
+              options: { minimize: isProduction }
             }
           ]
         },
@@ -60,7 +62,7 @@ module.exports = () => {
                   quality: 65
                 },
                 optipng: {
-                  enabled: !isDevelopment
+                  enabled: isProduction
                 },
                 pngquant: {
                   quality: [0.5, 0.5],
