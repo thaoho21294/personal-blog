@@ -1,6 +1,6 @@
 import React from 'react'
-import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.scss'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar'
 import Posts from './components/Posts'
@@ -18,7 +18,7 @@ function App() {
         <Route path='/' exact element={<Posts />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
