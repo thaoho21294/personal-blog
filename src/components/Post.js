@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { BLOG_API } from '../constants'
 
 import axios from 'axios'
 
@@ -16,7 +17,7 @@ const Post = () => {
   useEffect(() => {
     if (isEditForm) {
       axios
-        .get('http://localhost:5001/posts/' + id)
+        .get(`${BLOG_API}/posts/` + id)
         .then((response) => {
           updatePost({
             username: response.data.username,
@@ -30,7 +31,7 @@ const Post = () => {
     }
 
     axios
-      .get('http://localhost:5001/users/')
+      .get(`${BLOG_API}/users/`)
       .then((response) => {
         if (response.data.length > 0) {
           if (!isEditForm) {
@@ -55,7 +56,7 @@ const Post = () => {
     e.preventDefault()
 
     axios
-      .post('http://localhost:5001/posts/add', post)
+      .post(`${BLOG_API}/posts/add`, post)
       .then((res) => console.log(res.data))
 
     window.location = '/'

@@ -1,13 +1,19 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
 const path = require('path')
+const fs = require('fs')
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const fs = require('fs')
+
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '/.env'),
+})
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd())
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 
 module.exports = () => {
   const isDevelopment = process.env.NODE_ENV === 'development'
@@ -15,12 +21,12 @@ module.exports = () => {
 
   return {
     devServer: {
-      port: 9000
+      port: 9000,
     },
     mode: isDevelopment ? 'development' : 'production',
     output: {
       filename: isDevelopment ? '[name].js' : '[name].[hash].js',
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
     },
     module: {
       rules: [
@@ -30,32 +36,29 @@ module.exports = () => {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            cacheCompression: isProduction
-          }
+            cacheCompression: isProduction,
+          },
         },
         {
           test: /\.html$/,
           use: [
             {
               loader: 'html-loader',
-              options: { minimize: isProduction }
-            }
-          ]
+              options: { minimize: isProduction },
+            },
+          ],
         },
         {
           test: /\.s(a|c)ss$/,
           use: [
             isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
-            'sass-loader'
-          ]
+            'sass-loader',
+          ],
         },
         {
           test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader',
-          ],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(gif|png|jpe?g|svg)$/i,
@@ -66,40 +69,46 @@ module.exports = () => {
               options: {
                 mozjpeg: {
                   progressive: true,
-                  quality: 65
+                  quality: 65,
                 },
                 optipng: {
-                  enabled: isProduction
+                  enabled: isProduction,
                 },
                 pngquant: {
                   quality: [0.5, 0.5],
-                  speed: 4
+                  speed: 4,
                 },
                 gifsicle: {
-                  interlaced: false
+                  interlaced: false,
                 },
                 webp: {
-                  quality: 75
-                }
-              }
-            }
-          ]
-        }
-      ]
+                  quality: 75,
+                },
+              },
+            },
+          ],
+        },
+      ],
     },
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules']
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(dotenv.parsed),
+        'process.env.NODE_ENV': JSON.stringify(
+          isDevelopment ? 'development' : 'production',
+        ),
+      }),
       new CleanWebpackPlugin(),
       new HtmlWebPackPlugin({
         template: './public/index.html',
-        filename: './index.html'
+        filename: './index.html',
       }),
       new MiniCssExtractPlugin({
         filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-      })
-    ]
+        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+      }),
+    ],
   }
 }
