@@ -31,7 +31,9 @@ const Posts = () => {
       {posts.map((post) => {
         return (
           <div key={post._id}>
-            <h4 className='title'>{post.title}</h4>
+            <Link to={`/post/${post._id}`}>
+              <h4 className='title'>{post.title}</h4>
+            </Link>
             <div className='content'>{post.content}</div>
             <Link to={'/post/edit/' + post._id}>edit</Link> |{' '}
             <a
