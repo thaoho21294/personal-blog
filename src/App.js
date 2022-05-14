@@ -18,7 +18,7 @@ function App() {
           <Route path='/post/:id' element={<ViewPost />} />
           <Route path='/post/create' element={<Post />} />
           <Route path='/post/edit/:id' element={<Post />} />
-          <Route path='/' exact element={<Posts />} />
+          <Route path='/' element={<Posts />} />
         </Routes>
       </div>
     </BrowserRouter>

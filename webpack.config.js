@@ -22,11 +22,13 @@ module.exports = () => {
   return {
     devServer: {
       port: 9000,
+      historyApiFallback: true,
     },
     mode: isDevelopment ? 'development' : 'production',
     output: {
       filename: isDevelopment ? '[name].js' : '[name].[hash].js',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
     },
     module: {
       rules: [
