@@ -27,7 +27,7 @@ const ViewPost = () => {
 
   return (
     <div className='view-post-wrapper'>
-      <h2 className='title'>{post.title}</h2>
+      <h1 className='title'>{post.title}</h1>
       <div className='content'>{post.content}</div>
     </div>
   )
