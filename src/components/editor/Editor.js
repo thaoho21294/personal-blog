@@ -2,28 +2,17 @@ import React, { useMemo, useCallback } from 'react'
 import { Editable, Slate, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import isHotkey from 'is-hotkey'
-import useEditorConfig from './useEditorConfig'
-import useSelection from './useSelection'
-import MarkButton from './MarkButton'
-import BlockButton from './BlockButton'
-import Toolbar from './Toolbar'
+import { BlockButton, MarkButton, Toolbar, Element, Leaf } from './components'
 import { HOTKEYS } from '../../constants'
 import { toggleMark } from '../../utils/editor'
 
 const Editor = ({ document, onChange }) => {
   const editor = useMemo(() => withReact(createEditor()), [])
-  const { renderElement, renderLeaf } = useEditorConfig(editor)
-  const [selection, setSelection] = useSelection(editor)
-
-  const onChangeHandler = useCallback(
-    (document) => {
-      onChange(document)
-    },
-    [editor.selection, onChange, setSelection],
-  )
+  const renderElement = useCallback((props) => <Element {...props} />, [])
+  const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
 
   return (
-    <Slate editor={editor} value={document} onChange={onChangeHandler}>
+    <Slate editor={editor} value={document} onChange={onChange}>
       <Toolbar>
         <MarkButton format='bold' icon='format_bold' />
         <MarkButton format='italic' icon='format_italic' />

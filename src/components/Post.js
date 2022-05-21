@@ -117,7 +117,10 @@ const Post = () => {
             onChange={(event) => updatePost({ title: event.target.value })}
           />
         </div>
-        <Editor document={document} onChange={() => updateDocument()} />
+        <Editor
+          document={document}
+          onChange={(document) => updateDocument(document)}
+        />
         <div className='form-group'>
           <input
             type='submit'
