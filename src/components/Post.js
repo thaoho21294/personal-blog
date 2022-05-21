@@ -1,8 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { BLOG_API } from '../constants'
+import Editor from './editor/Editor'
 
 import axios from 'axios'
+
+const ExampleDocument = [
+  {
+    type: 'h1',
+    children: [{ text: 'Heading 1' }],
+  },
+  {
+    type: 'h2',
+    children: [{ text: 'Heading 2' }],
+  },
+  {
+    type: 'paragraph',
+    children: [
+      { text: 'Hello World! This is my paragraph inside a sample document.' },
+      { text: 'Bold text.', bold: true, code: true },
+      { text: 'Italic text.', italic: true },
+      { text: 'Bold and underlined text.', bold: true, underline: true },
+      { text: 'variableFoo', code: true },
+    ],
+  },
+]
 
 const Post = () => {
   const { id } = useParams()
@@ -13,6 +35,8 @@ const Post = () => {
     title: '',
     content: '',
   })
+
+  const [document, updateDocument] = useState(ExampleDocument)
 
   useEffect(() => {
     if (isEditForm) {
@@ -93,16 +117,7 @@ const Post = () => {
             onChange={(event) => updatePost({ title: event.target.value })}
           />
         </div>
-        <div className='form-group'>
-          <label>Content: </label>
-          <input
-            type='text'
-            required
-            className='form-control'
-            value={post.content}
-            onChange={(event) => updatePost({ content: event.target.value })}
-          />
-        </div>
+        <Editor document={document} onChange={() => updateDocument()} />
         <div className='form-group'>
           <input
             type='submit'
