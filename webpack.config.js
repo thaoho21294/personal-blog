@@ -60,7 +60,10 @@ module.exports = () => {
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          use: [
+            isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+          ],
         },
         {
           test: /\.(gif|png|jpe?g|svg)$/i,
