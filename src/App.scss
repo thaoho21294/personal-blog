@@ -1,5 +1,5 @@
-@import "~bootstrap/scss/bootstrap";
-@import "~prismjs/themes/prism";
+@import '~bootstrap/scss/bootstrap';
+@import '~prismjs/themes/prism';
 
 .brand {
   text-align: center;
@@ -15,4 +15,8 @@
 
 pre[class*='language-'] {
   font-size: 14px;
+}
+
+.MuiFormControl-root {
+  margin: 0 !important;
 }

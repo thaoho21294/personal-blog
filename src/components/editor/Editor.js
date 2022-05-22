@@ -2,7 +2,14 @@ import React, { useMemo, useCallback } from 'react'
 import { Editable, Slate, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import isHotkey from 'is-hotkey'
-import { BlockButton, MarkButton, Toolbar, Element, Leaf } from './components'
+import {
+  BlockButton,
+  MarkButton,
+  Toolbar,
+  Element,
+  Leaf,
+  BlockTypeSelect,
+} from './components'
 import { HOTKEYS } from '../../constants'
 import { toggleMark } from '../../utils/editor'
 
@@ -14,12 +21,11 @@ const Editor = ({ document, onChange }) => {
   return (
     <Slate editor={editor} value={document} onChange={onChange}>
       <Toolbar>
+        <BlockTypeSelect />
         <MarkButton format='bold' icon='format_bold' />
         <MarkButton format='italic' icon='format_italic' />
         <MarkButton format='underline' icon='format_underlined' />
         <MarkButton format='code' icon='code' />
-        <BlockButton format='heading-one' icon='looks_one' />
-        <BlockButton format='heading-two' icon='looks_two' />
         <BlockButton format='block-quote' icon='format_quote' />
         <BlockButton format='numbered-list' icon='format_list_numbered' />
         <BlockButton format='bulleted-list' icon='format_list_bulleted' />

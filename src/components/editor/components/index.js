@@ -5,5 +5,15 @@ import Icon from './Icon'
 import Leaf from './Leaf'
 import MarkButton from './MarkButton'
 import Toolbar from './Toolbar'
+import BlockTypeSelect from './BlockTypeSelect'
 
-export { BlockButton, Button, Element, Icon, Leaf, MarkButton, Toolbar }
+export {
+  BlockButton,
+  Button,
+  Element,
+  Icon,
+  Leaf,
+  MarkButton,
+  Toolbar,
+  BlockTypeSelect,
+}
