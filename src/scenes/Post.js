@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { BLOG_API } from '../constants'
-import Editor from './editor/Editor'
+import Editor from 'components/editor/Editor'
 
 import axios from 'axios'
 

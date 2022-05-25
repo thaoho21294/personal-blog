@@ -4,7 +4,7 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import { useSlate } from 'slate-react'
 import { PARAGRAPH_STYLES } from '../../../constants'
-import { toggleBlockType, getTextBlockStyle } from '../../../utils/editor'
+import { toggleBlockType, getTextBlockStyle } from 'utils/editor'
 
 export default function BlockTypeSelect() {
   const editor = useSlate()

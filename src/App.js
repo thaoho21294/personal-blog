@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/navbar/Navbar'
-import Posts from './components/Posts'
-import Post from './components/Post'
-import ViewPost from './components/view-post/ViewPost'
+import Navbar from 'components/navbar/Navbar'
+import Posts from './scenes/Posts'
+import Post from './scenes/Post'
+import ViewPost from './scenes/view-post/ViewPost'
 
 // TODO: explore why path array doesn't work
 

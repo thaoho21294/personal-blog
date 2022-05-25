@@ -11,7 +11,7 @@ import {
   BlockTypeSelect,
 } from './components'
 import { HOTKEYS } from '../../constants'
-import { toggleMark } from '../../utils/editor'
+import { toggleMark } from 'utils/editor'
 
 const Editor = ({ document, onChange }) => {
   const editor = useMemo(() => withReact(createEditor()), [])
