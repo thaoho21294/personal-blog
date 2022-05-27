@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react'
+import React, { useMemo, useCallback, useEffect } from 'react'
 import { Editable, Slate, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import isHotkey from 'is-hotkey'
@@ -13,10 +13,14 @@ import {
 import { HOTKEYS } from '../../constants'
 import { toggleMark } from 'utils/editor'
 
-const Editor = ({ document, onChange }) => {
+const Editor = ({ document, onChange, readOnly }) => {
   const editor = useMemo(() => withReact(createEditor()), [])
   const renderElement = useCallback((props) => <Element {...props} />, [])
   const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
+
+  useEffect(() => {
+    editor.children = document
+  }, [document.length])
 
   return (
     <Slate editor={editor} value={document} onChange={onChange}>
@@ -40,6 +44,7 @@ const Editor = ({ document, onChange }) => {
         placeholder='Enter some rich text…'
         spellCheck
         autoFocus
+        readOnly={readOnly}
         onKeyDown={(event) => {
           for (const hotkey in HOTKEYS) {
             if (isHotkey(hotkey, event)) {

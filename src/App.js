@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from 'components/navbar/Navbar'
 import Posts from './scenes/Posts'
 import Post from './scenes/Post'
-import ViewPost from './scenes/view-post/ViewPost'
 
 // TODO: explore why path array doesn't work
 
@@ -15,7 +14,7 @@ function App() {
         <h3 className='brand'>Thao Ho Blog</h3>
         <Navbar />
         <Routes>
-          <Route path='/post/:id' element={<ViewPost />} />
+          <Route path='/post/:id' element={<Post />} />
           <Route path='/post/create' element={<Post />} />
           <Route path='/post/edit/:id' element={<Post />} />
           <Route path='/' element={<Posts />} />
