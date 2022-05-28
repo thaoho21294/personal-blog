@@ -3,6 +3,7 @@ import { useMatch, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { BLOG_API } from '../constants'
 import Editor from 'components/editor/Editor'
+import { Button, Input } from '@mui/material'
 
 const Post = () => {
   const { id } = useParams()
@@ -25,8 +26,7 @@ const Post = () => {
     }
   }, [])
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const onSubmit = () => {
     if (id) {
       axios
         .post(`${BLOG_API}/posts/update/${id}`, {
@@ -44,35 +44,29 @@ const Post = () => {
         })
         .then((res) => console.log(res.data))
     }
-
-    // window.location = '/'
   }
 
   return (
     <div>
-      <h3>{isEditing ? 'Edit Post' : 'Create Post'}</h3>
-      <form onSubmit={onSubmit}>
-        <div className='form-group'>
-          <input
-            placeholder='Title'
-            type='text'
-            required
-            className='form-control'
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </div>
-        <Editor
-          document={content}
-          onChange={(content) => setContent(content)}
-          readOnly={isReadOnly}
-        />
-        {!isReadOnly && (
-          <div className='form-group'>
-            <input type='submit' value='Submit' className='btn btn-primary' />
-          </div>
-        )}
-      </form>
+      <div style={{ marginTop: '20px' }}></div>
+      <Input
+        placeholder='Title'
+        value={title}
+        fullWidth
+        required
+        onChange={(event) => setTitle(event.target.value)}
+      />
+      <div style={{ marginTop: '20px' }}></div>
+      <Editor
+        document={content}
+        onChange={(content) => setContent(content)}
+        readOnly={isReadOnly}
+      />
+      {!isReadOnly && (
+        <Button variant='contained' onClick={onSubmit}>
+          {isEditing ? 'Update' : 'Create'}
+        </Button>
+      )}
     </div>
   )
 }

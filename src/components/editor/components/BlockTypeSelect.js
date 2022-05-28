@@ -22,7 +22,12 @@ export default function BlockTypeSelect() {
 
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
-      <Select variant='standard' value={blockType} onChange={onBlockTypeChange}>
+      <Select
+        variant='standard'
+        value={blockType}
+        onChange={onBlockTypeChange}
+        fullWidth
+      >
         {PARAGRAPH_STYLES.map((blockType) => (
           <MenuItem key={blockType} value={blockType}>
             {blockType}
