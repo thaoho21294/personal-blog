@@ -39,20 +39,22 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
 
   return (
     <Slate editor={editor} value={content} onChange={onChange}>
-      <Toolbar>
-        <BlockTypeSelect />
-        <MarkButton format='bold' icon='format_bold' />
-        <MarkButton format='italic' icon='format_italic' />
-        <MarkButton format='underline' icon='format_underlined' />
-        <MarkButton format='code' icon='code' />
-        <BlockButton format='block-quote' icon='format_quote' />
-        <BlockButton format='numbered-list' icon='format_list_numbered' />
-        <BlockButton format='bulleted-list' icon='format_list_bulleted' />
-        <BlockButton format='left' icon='format_align_left' />
-        <BlockButton format='center' icon='format_align_center' />
-        <BlockButton format='right' icon='format_align_right' />
-        <BlockButton format='justify' icon='format_align_justify' />
-      </Toolbar>
+      {!readOnly && (
+        <Toolbar>
+          <BlockTypeSelect />
+          <MarkButton format='bold' icon='format_bold' />
+          <MarkButton format='italic' icon='format_italic' />
+          <MarkButton format='underline' icon='format_underlined' />
+          <MarkButton format='code' icon='code' />
+          <BlockButton format='block-quote' icon='format_quote' />
+          <BlockButton format='numbered-list' icon='format_list_numbered' />
+          <BlockButton format='bulleted-list' icon='format_list_bulleted' />
+          <BlockButton format='left' icon='format_align_left' />
+          <BlockButton format='center' icon='format_align_center' />
+          <BlockButton format='right' icon='format_align_right' />
+          <BlockButton format='justify' icon='format_align_justify' />
+        </Toolbar>
+      )}
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
