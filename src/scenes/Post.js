@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useMatch, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { BLOG_API } from '../constants'
 import Editor from 'components/editor/Editor'
@@ -8,18 +8,19 @@ import { getTitle } from 'utils'
 
 const Post = () => {
   const { id } = useParams()
-  const isEditing = useMatch('post/edit/:id')
-  const isReadOnly = !isEditing && id
+  const [editing, setEditing] = useState(false)
   const [content, setContent] = useState([])
-  const [receivedData, setReceivedData] = useState(false)
+  const [forceUpdate, setForceUpdate] = useState(false)
+  const [originalContent, setOriginalContent] = useState(false)
 
   useEffect(() => {
     if (id) {
       axios
         .get(`${BLOG_API}/posts/${id}`)
         .then((response) => {
+          setOriginalContent(response.data.content)
           setContent(response.data.content)
-          setReceivedData(true)
+          setForceUpdate(true)
         })
         .catch(function (error) {
           console.log(error)
@@ -51,17 +52,46 @@ const Post = () => {
   return (
     <div>
       <div style={{ marginTop: '20px', textAlign: 'right' }}>
-        {!isReadOnly && (
-          <Button variant='contained' onClick={onSubmit}>
-            {isEditing ? 'Update' : 'Create'}
+        {!editing && (
+          <Button
+            onClick={() => {
+              setEditing(true)
+              setForceUpdate(false)
+            }}
+          >
+            Edit
           </Button>
+        )}
+        {editing && (
+          <>
+            <Button
+              variant='contained'
+              onClick={() => {
+                onSubmit()
+                setEditing(false)
+              }}
+            >
+              Publish
+            </Button>
+            <span style={{ marginLeft: '4px' }}></span>
+            <Button
+              variant='outlined'
+              onClick={() => {
+                setContent(originalContent)
+                setForceUpdate(true)
+                setEditing(false)
+              }}
+            >
+              Revert
+            </Button>
+          </>
         )}
       </div>
       <Editor
         content={content}
         onChange={(content) => setContent(content)}
-        readOnly={isReadOnly}
-        receivedData={receivedData}
+        readOnly={!editing}
+        forceUpdate={forceUpdate}
       />
     </div>
   )

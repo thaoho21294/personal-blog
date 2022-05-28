@@ -13,15 +13,29 @@ import {
 import { HOTKEYS } from '../../constants'
 import { toggleMark } from 'utils/editor'
 
-const Editor = ({ content, onChange, readOnly, receivedData }) => {
+const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
   const editor = useMemo(() => withReact(createEditor()), [])
   const renderElement = useCallback((props) => <Element {...props} />, [])
   const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
 
   useEffect(() => {
-    editor.children = content
-    editor.onChange()
-  }, [receivedData])
+    if (forceUpdate) {
+      editor.children = content
+      if (editor.children.length) {
+        editor.selection = {
+          anchor: {
+            path: [1, 0],
+            offset: 1,
+          },
+          focus: {
+            path: [1, 0],
+            offset: 1,
+          },
+        }
+      }
+      editor.onChange()
+    }
+  }, [forceUpdate])
 
   return (
     <Slate editor={editor} value={content} onChange={onChange}>
