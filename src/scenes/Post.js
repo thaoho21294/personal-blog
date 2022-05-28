@@ -3,14 +3,15 @@ import { useMatch, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { BLOG_API } from '../constants'
 import Editor from 'components/editor/Editor'
-import { Button, Input } from '@mui/material'
+import { Button } from '@mui/material'
+import { getTitle } from 'utils'
 
 const Post = () => {
   const { id } = useParams()
   const isEditing = useMatch('post/edit/:id')
   const isReadOnly = !isEditing && id
   const [content, setContent] = useState([])
-  const [title, setTitle] = useState('')
+  const [receivedData, setReceivedData] = useState(false)
 
   useEffect(() => {
     if (id) {
@@ -18,7 +19,7 @@ const Post = () => {
         .get(`${BLOG_API}/posts/${id}`)
         .then((response) => {
           setContent(response.data.content)
-          setTitle(response.data.title)
+          setReceivedData(true)
         })
         .catch(function (error) {
           console.log(error)
@@ -27,6 +28,7 @@ const Post = () => {
   }, [])
 
   const onSubmit = () => {
+    const title = getTitle(content)
     if (id) {
       axios
         .post(`${BLOG_API}/posts/update/${id}`, {
@@ -48,25 +50,19 @@ const Post = () => {
 
   return (
     <div>
-      <div style={{ marginTop: '20px' }}></div>
-      <Input
-        placeholder='Title'
-        value={title}
-        fullWidth
-        required
-        onChange={(event) => setTitle(event.target.value)}
-      />
-      <div style={{ marginTop: '20px' }}></div>
+      <div style={{ marginTop: '20px', textAlign: 'right' }}>
+        {!isReadOnly && (
+          <Button variant='contained' onClick={onSubmit}>
+            {isEditing ? 'Update' : 'Create'}
+          </Button>
+        )}
+      </div>
       <Editor
-        document={content}
+        content={content}
         onChange={(content) => setContent(content)}
         readOnly={isReadOnly}
+        receivedData={receivedData}
       />
-      {!isReadOnly && (
-        <Button variant='contained' onClick={onSubmit}>
-          {isEditing ? 'Update' : 'Create'}
-        </Button>
-      )}
     </div>
   )
 }

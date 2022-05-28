@@ -37,6 +37,7 @@ router.route('/update/:id').post((req, res) => {
     .then((post) => {
       post.username = req.body.username
       post.content = req.body.content
+      post.title = req.body.title
 
       post
         .save()

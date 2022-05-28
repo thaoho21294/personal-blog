@@ -97,7 +97,6 @@ export function getTextBlockStyle(editor) {
   while (startTopLevelBlockIndex <= endTopLevelBlockIndex) {
     const [node, _] = Editor.node(editor, [startTopLevelBlockIndex])
     if (blockType == null) {
-      console.log(node.type)
       blockType = node.type
     } else if (blockType !== node.type) {
       return 'multiple'

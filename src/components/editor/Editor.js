@@ -13,17 +13,18 @@ import {
 import { HOTKEYS } from '../../constants'
 import { toggleMark } from 'utils/editor'
 
-const Editor = ({ document, onChange, readOnly }) => {
+const Editor = ({ content, onChange, readOnly, receivedData }) => {
   const editor = useMemo(() => withReact(createEditor()), [])
   const renderElement = useCallback((props) => <Element {...props} />, [])
   const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
 
   useEffect(() => {
-    editor.children = document
-  }, [document.length])
+    editor.children = content
+    editor.onChange()
+  }, [receivedData])
 
   return (
-    <Slate editor={editor} value={document} onChange={onChange}>
+    <Slate editor={editor} value={content} onChange={onChange}>
       <Toolbar>
         <BlockTypeSelect />
         <MarkButton format='bold' icon='format_bold' />
