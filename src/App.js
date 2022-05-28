@@ -11,7 +11,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className='app'>
-        <h3 className='brand'>Thao Ho Blog</h3>
+        <header>
+          <h1 className='brand'>Thao Ho Blog</h1>
+        </header>
         <Navbar />
         <Routes>
           <Route path='/post/:id' element={<Post />} />

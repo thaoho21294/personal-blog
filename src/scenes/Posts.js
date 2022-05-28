@@ -27,22 +27,12 @@ const Posts = () => {
 
   return (
     <div>
-      <h3> All Posts</h3>
       {posts.map((post) => {
         return (
-          <div key={post._id}>
+          <div key={post._id} style={{ marginTop: '2.37rem' }}>
             <Link to={`/post/${post._id}`}>
-              <h4 className='title'>{post.title}</h4>
+              <h3 className='title'>{post.title}</h3>
             </Link>
-            <Link to={'/post/edit/' + post._id}>edit</Link> |{' '}
-            <a
-              href='#'
-              onClick={() => {
-                deletePost(post._id)
-              }}
-            >
-              delete
-            </a>
           </div>
         )
       })}
