@@ -10,8 +10,17 @@ const Post = () => {
   const { id } = useParams()
   const [editing, setEditing] = useState(false)
   const [content, setContent] = useState([])
-  const [forceUpdate, setForceUpdate] = useState(false)
+  const [forceUpdate, setForceUpdate] = useState(0)
   const [originalContent, setOriginalContent] = useState(false)
+
+  useEffect(() => {
+    if (!id) {
+      console.log('force update')
+      setContent([])
+      setEditing(true)
+      setForceUpdate((v) => v + 1)
+    }
+  }, [id])
 
   useEffect(() => {
     if (id) {
@@ -20,7 +29,7 @@ const Post = () => {
         .then((response) => {
           setOriginalContent(response.data.content)
           setContent(response.data.content)
-          setForceUpdate(true)
+          setForceUpdate((v) => v + 1)
         })
         .catch(function (error) {
           console.log(error)
@@ -56,7 +65,6 @@ const Post = () => {
           <Button
             onClick={() => {
               setEditing(true)
-              setForceUpdate(false)
             }}
           >
             Edit
@@ -74,16 +82,18 @@ const Post = () => {
               Publish
             </Button>
             <span style={{ marginLeft: '4px' }}></span>
-            <Button
-              variant='outlined'
-              onClick={() => {
-                setContent(originalContent)
-                setForceUpdate(true)
-                setEditing(false)
-              }}
-            >
-              Revert
-            </Button>
+            {id && (
+              <Button
+                variant='outlined'
+                onClick={() => {
+                  setContent(originalContent)
+                  setForceUpdate((v) => v + 1)
+                  setEditing(false)
+                }}
+              >
+                Cancel
+              </Button>
+            )}
           </>
         )}
       </div>

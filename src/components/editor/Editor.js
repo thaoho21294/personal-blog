@@ -19,22 +19,10 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
   const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
 
   useEffect(() => {
-    if (forceUpdate) {
-      editor.children = content
-      if (editor.children.length) {
-        editor.selection = {
-          anchor: {
-            path: [1, 0],
-            offset: 1,
-          },
-          focus: {
-            path: [1, 0],
-            offset: 1,
-          },
-        }
-      }
-      editor.onChange()
-    }
+    editor.children = content
+    // TODO: handle auto focusing
+    editor.selection = null
+    editor.onChange()
   }, [forceUpdate])
 
   return (
