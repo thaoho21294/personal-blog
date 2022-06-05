@@ -20,8 +20,17 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
 
   useEffect(() => {
     editor.children = content
-    // TODO: handle auto focusing
-    editor.selection = null
+    // TODO: display the mouse
+    editor.selection = {
+      anchor: {
+        offset: 0,
+        path: [0, 0],
+      },
+      focus: {
+        offset: 0,
+        path: [0, 0],
+      },
+    }
     editor.onChange()
   }, [forceUpdate])
 
