@@ -1,4 +1,5 @@
 import React from 'react'
+import Code from './Code'
 
 const Element = ({ attributes, children, element }) => {
   const style = { textAlign: element.align }
@@ -56,6 +57,12 @@ const Element = ({ attributes, children, element }) => {
         <ol style={style} {...attributes}>
           {children}
         </ol>
+      )
+    case 'code':
+      return (
+        <Code language='javascript' {...attributes}>
+          {children}
+        </Code>
       )
     default:
       return (

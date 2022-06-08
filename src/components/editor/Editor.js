@@ -42,7 +42,7 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
           <MarkButton format='bold' icon='format_bold' />
           <MarkButton format='italic' icon='format_italic' />
           <MarkButton format='underline' icon='format_underlined' />
-          <MarkButton format='code' icon='code' />
+          <BlockButton format='code' icon='code' />
           <BlockButton format='block-quote' icon='format_quote' />
           <BlockButton format='numbered-list' icon='format_list_numbered' />
           <BlockButton format='bulleted-list' icon='format_list_bulleted' />

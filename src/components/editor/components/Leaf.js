@@ -5,10 +5,6 @@ const Leaf = ({ attributes, children, leaf }) => {
     children = <strong>{children}</strong>
   }
 
-  if (leaf.code) {
-    children = <code>{children}</code>
-  }
-
   if (leaf.italic) {
     children = <em>{children}</em>
   }
