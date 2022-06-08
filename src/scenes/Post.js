@@ -6,17 +6,25 @@ import Editor from 'components/editor/Editor'
 import { Button } from '@mui/material'
 import { getTitle } from 'utils'
 
+const defaultContent = [
+  {
+    type: 'h1',
+    align: 'left',
+    children: [{ text: '' }],
+  },
+]
+
 const Post = () => {
   const { id } = useParams()
   const [editing, setEditing] = useState(false)
   const [content, setContent] = useState([])
   const [forceUpdate, setForceUpdate] = useState(0)
-  const [originalContent, setOriginalContent] = useState(false)
+  const [originalContent, setOriginalContent] = useState()
 
   useEffect(() => {
     if (!id) {
       console.log('force update')
-      setContent([])
+      setContent(defaultContent)
       setEditing(true)
       setForceUpdate((v) => v + 1)
     }

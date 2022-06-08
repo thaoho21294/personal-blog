@@ -20,17 +20,6 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
 
   useEffect(() => {
     editor.children = content
-    // TODO: display the mouse
-    editor.selection = {
-      anchor: {
-        offset: 0,
-        path: [0, 0],
-      },
-      focus: {
-        offset: 0,
-        path: [0, 0],
-      },
-    }
     editor.onChange()
   }, [forceUpdate])
 
@@ -55,7 +44,7 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
-        placeholder='Enter some rich text…'
+        placeholder='Enter the title...'
         spellCheck
         autoFocus
         readOnly={readOnly}
