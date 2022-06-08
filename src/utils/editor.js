@@ -83,7 +83,7 @@ export const toggleBlock = (editor, format) => {
 export function getTextBlockStyle(editor) {
   const selection = editor.selection
   if (selection == null) {
-    return null
+    return ''
   }
   // gives the forward-direction points in case the selection was
   // was backwards.
@@ -93,10 +93,10 @@ export function getTextBlockStyle(editor) {
   let startTopLevelBlockIndex = start.path[0]
   const endTopLevelBlockIndex = end.path[0]
 
-  let blockType = null
+  let blockType = ''
   while (startTopLevelBlockIndex <= endTopLevelBlockIndex) {
     const [node, _] = Editor.node(editor, [startTopLevelBlockIndex])
-    if (blockType == null) {
+    if (blockType === '') {
       blockType = node.type
     } else if (blockType !== node.type) {
       return 'multiple'
