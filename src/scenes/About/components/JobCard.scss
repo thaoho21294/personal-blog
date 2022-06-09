@@ -1,0 +1,10 @@
+.job-card {
+  .job-card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .company {
+    color: black;
+    font-weight: bold;
+  }
+}

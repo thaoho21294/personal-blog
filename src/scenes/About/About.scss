@@ -1,0 +1,71 @@
+$paddingLeft: 2em;
+$paddingRight: 2em;
+
+.about {
+  position: relative;
+  > .header {
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    padding: $paddingLeft 5em 4em $paddingRight;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: lightblue;
+      transform-origin: 0 0;
+      transform: skew(0, -7deg);
+      z-index: -1;
+    }
+
+    .name {
+      font-size: 3em;
+
+      .firstname {
+        font-weight: bold;
+      }
+    }
+
+    .role {
+      font-size: 0.8em;
+    }
+  }
+  .avatar {
+    width: 6.5em;
+    position: absolute;
+    right: 3em;
+    top: 3.5em;
+    border-radius: 50%;
+  }
+  > .content {
+    color: unset;
+    margin-top: 2em;
+    padding-left: $paddingLeft;
+    padding-right: $paddingRight;
+    font-size: 1rem;
+
+    .contact {
+      margin-top: 3em;
+    }
+  }
+
+  .title,
+  .sub-title {
+    text-transform: uppercase;
+  }
+
+  .title {
+    color: black;
+    font-weight: bold;
+  }
+  .sub-title {
+    color: grey;
+  }
+  .content {
+    color: grey;
+  }
+}

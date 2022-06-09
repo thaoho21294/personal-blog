@@ -1,0 +1,14 @@
+.row {
+  display: flex;
+  > div {
+    flex-basis: 0;
+  }
+
+  .left-column {
+    flex-grow: 1;
+  }
+  .right-column {
+    margin-left: 2em;
+    flex-grow: 2;
+  }
+}
