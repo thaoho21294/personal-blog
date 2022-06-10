@@ -67,7 +67,7 @@ const Post = () => {
   }
 
   return (
-    <div>
+    <div className='small-container'>
       <div style={{ marginTop: '20px', textAlign: 'right' }}>
         {!editing && (
           <Button

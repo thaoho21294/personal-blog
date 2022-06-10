@@ -8,7 +8,7 @@ import JobCard from './components/JobCard'
 
 const About = () => {
   return (
-    <div className='about'>
+    <div className='medium-container about'>
       <div className='header'>
         <div className='name'>
           <span className='firstname'>Thao</span> Ho
@@ -91,7 +91,7 @@ const About = () => {
             <div>University of Technology</div>
             <ul>
               <li>GPA: 7.9/10</li>
-              <li>09/2012 - 06/2017</li>
+              <li>2012 - 2017 (4.5 years)</li>
               <li>TOEIC: 630/990</li>
             </ul>
           </Card>
@@ -149,16 +149,17 @@ const About = () => {
           </Card>
           <JobCard
             title='internship'
-            time={['03/2016', '5/2016']}
+            time={['03/2016', '05/2016']}
             company='global cypersoft jsc'
           >
             <ul>
               <li>
-                Be training and self-study some java technologies: Java, Spring
-                Web MVC, Hibernate, Waterfall
+                Was training and self-study some java technologies: Java, Spring
+                Web MVC, Hibernate
               </li>
               <li>
-                Work in team of 6 to add feature to a HR management application.
+                Worked in team of 6 to add feature to a HR management
+                application.
               </li>
             </ul>
           </JobCard>

@@ -4,7 +4,7 @@ import './Navbar.scss'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className='small-container'>
       <ol>
         <li>
           <Link to='/'>all posts</Link>

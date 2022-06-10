@@ -26,7 +26,7 @@ const Posts = () => {
   }
 
   return (
-    <div>
+    <div className='small-container'>
       {posts.map((post) => {
         return (
           <div key={post._id} style={{ marginTop: '2.37rem' }}>
