@@ -30,3 +30,10 @@ header {
 .MuiFormControl-root {
   margin: 0 !important;
 }
+
+@media print {
+  header,
+  nav {
+    display: none;
+  }
+}
