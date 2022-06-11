@@ -68,7 +68,7 @@ const About = () => {
                     <li>
                       FE: React 16, redux, redux-thunk, single-spa
                       (micro-frontend), typescript, docker, webpack, formik,
-                      e-chart, redux-toolkit, react-to-print, xlsx,
+                      e-chart, redux-toolkit, react-table, xlsx,
                       react-testing-library.
                     </li>
                     <li>BE: golang, graphQL, postgresql.</li>
