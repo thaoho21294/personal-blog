@@ -12,7 +12,7 @@ Using React, Express, Mongoose, Slate, Prismjs
   >
   > npm install
   >
-  > nodemon server
+  > nodemon index
 
 - Run ui:
 
@@ -24,10 +24,10 @@ Using React, Express, Mongoose, Slate, Prismjs
 
 # API
 
-- GET http://localhost:5001/posts
-- GET http://localhost:5001/users
-- POST http://localhost:5001/posts/add
-- POST http://localhost:5001/posts/update/626fa2485ff585dcf38de025
+- GET http://localhost:5000/posts
+- GET http://localhost:5000/users
+- POST http://localhost:5000/posts/add
+- POST http://localhost:5000/posts/update/626fa2485ff585dcf38de025
 - Example body:
 
 ```json
