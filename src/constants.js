@@ -1,4 +1,7 @@
-const BLOG_API = process.env.BLOG_API
+const BLOG_API =
+  process.env.NODE_ENV === 'production'
+    ? process.env.BLOG_API_PRODUCTION
+    : process.env.BLOG_API_DEVELOPMENT
 const TEXT_ALIGN_TYPES = ['left', 'center', 'right', 'justify']
 const HOTKEYS = {
   'mod+b': 'bold',
