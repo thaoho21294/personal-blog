@@ -23,7 +23,6 @@ const Post = () => {
 
   useEffect(() => {
     if (!id) {
-      console.log('force update')
       setContent(defaultContent)
       setEditing(true)
       setForceUpdate((v) => v + 1)
