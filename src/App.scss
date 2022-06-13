@@ -37,3 +37,10 @@ header {
     display: none;
   }
 }
+
+.page-break-before {
+  page-break-before: always;
+  @media print {
+    margin-top: 1rem;
+  }
+}

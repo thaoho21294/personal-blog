@@ -1,9 +1,9 @@
 import React from 'react'
 import './Row.scss'
 
-const Row = ({ children }) => {
+const Row = ({ children, className }) => {
   return (
-    <div className='row'>
+    <div className={`row ${className}`}>
       <div className='left-column'>
         {children[0]}
         {children[2]}

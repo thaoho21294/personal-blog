@@ -34,10 +34,10 @@ const About = () => {
           </div>
           <Card title='profile'>
             An independent, eager, open-mind software engineer specializing in
-            React working on various projects from both American, Singapore and
-            Vietnamese customers. Strong experience in Front-end technique but
-            also worked with Back-end. For now, I want to become a proficient
-            senior front-end engineer who can propose good solutions and mentor
+            React working on various projects from both American, Singapore
+            customers. Strong experience in Front-end technique but also worked
+            with Back-end. For now, I want to become a proficient senior
+            front-end engineer who can propose good solutions and mentor
             juniors. In the next 5 years, I want to become a technical
             architect.
           </Card>
@@ -96,7 +96,7 @@ const About = () => {
             </ul>
           </Card>
         </Row>
-        <Row>
+        <Row className='page-break-before'>
           <Card title='expertise' subTitle='technical'>
             <ul>
               <li>React</li>
@@ -105,7 +105,6 @@ const About = () => {
               <li>HTML</li>
               <li>SCSS</li>
               <li>Webpack</li>
-              <li>GraphQL</li>
             </ul>
           </Card>
           <JobCard
@@ -172,7 +171,6 @@ const About = () => {
               <li>Training</li>
               <br />
               <li>Badminton</li>
-              <li>Running</li>
               <li>Music</li>
             </ul>
           </Card>
