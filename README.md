@@ -12,7 +12,7 @@ Using React, Express, Mongoose, Slate, Prismjs
   >
   > npm install
   >
-  > nodemon index
+  > nodemon server
 
 - Run ui:
 
