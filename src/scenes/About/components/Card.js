@@ -1,9 +1,10 @@
 import React from 'react'
+import './Card.scss'
 
 const Card = ({ title, subTitle, children }) => {
   return (
     <div className='card'>
-      <h3 className='title'>{title}</h3>
+      {title && <h3 className='title card-title'>{title}</h3>}
       {subTitle && <h4 className='sub-title'>{subTitle}</h4>}
       <div className='content'>{children}</div>
     </div>

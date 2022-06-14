@@ -43,13 +43,14 @@ const About = () => {
           </Card>
         </Row>
         <Row>
-          <Card title='skill' subTitle='professional'>
+          <Card title='skills' subTitle='technical'>
             <ul>
-              <li>Problem Solving</li>
-              <li>Accuracy</li>
-              <li>Teamwork</li>
-              <li>Self-development</li>
-              <li>Mentor</li>
+              <li>React</li>
+              <li>Redux</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>SCSS</li>
+              <li>Webpack</li>
             </ul>
           </Card>
           <Card title='experience'>
@@ -67,44 +68,50 @@ const About = () => {
                   <ul>
                     <li>
                       FE: React 16, redux, redux-thunk, single-spa
-                      (micro-frontend), typescript, docker, webpack, formik,
-                      e-chart, redux-toolkit, react-table, xlsx,
+                      (micro-frontend), typescript, redux-toolkit, docker,
+                      webpack, formik, e-chart, react-table, xlsx,
                       react-testing-library.
                     </li>
                     <li>BE: golang, graphQL, postgresql.</li>
-                    <li>Automation test: Cypress.</li>
+                    <li>E2E: Cypress.</li>
                   </ul>
                 </li>
                 <li>
-                  Main roles: Implement FE features, fix vulnerabilities,
-                  refactor code, review code, document, demo.
-                </li>
-                <li>
-                  Other roles: Implement API, write automation test, mentor,
-                  interview.
+                  Responsibilities:
+                  <ul>
+                    <li>
+                      Implement features, write unit-test, write automation
+                      tests, demo.
+                    </li>
+                    <li>
+                      Document, review code, refactor code, upgrade libraries.
+                    </li>
+                    <li>Mentor, interview.</li>
+                  </ul>
                 </li>
               </ul>
             </JobCard>
           </Card>
+          <Card subTitle='profesional'>
+            <ul>
+              <li>Problem Solving</li>
+              <li>Accuracy</li>
+              <li>Teamwork</li>
+              <li>Self-development</li>
+              <li>Mentor</li>
+            </ul>
+          </Card>
+        </Row>
+        <Row className='page-break-before'>
           <Card title='education'>
-            <div className='title'>Software Engineering</div>
+            <div className='sub-title'>
+              <strong>Software Engineering</strong>
+            </div>
             <div>University of Technology</div>
             <ul>
               <li>GPA: 7.9/10</li>
               <li>2012 - 2017 (4.5 years)</li>
               <li>TOEIC: 630/990</li>
-            </ul>
-          </Card>
-        </Row>
-        <Row className='page-break-before'>
-          <Card title='expertise' subTitle='technical'>
-            <ul>
-              <li>React</li>
-              <li>Redux</li>
-              <li>JavaScript</li>
-              <li>HTML</li>
-              <li>SCSS</li>
-              <li>Webpack</li>
             </ul>
           </Card>
           <JobCard
@@ -116,10 +123,22 @@ const About = () => {
               <li>
                 React (2 years): Restaurant Management Website.
                 <ul>
-                  <li>Techniques: React 15, ES6, Redux, redux-observable.</li>
                   <li>
-                    Roles: Implement features, fix bug, write unit-test, analyze
-                    stories, demo, implement API, write automation test.
+                    Techniques:
+                    <ul>
+                      <li>FE: React 15, ES6, Redux, redux-observable.</li>
+                      <li>BE: Microservice, Node.js, MySQL, S3</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Responsibilities:
+                    <ul>
+                      <li>
+                        Implement UI, fix bugs, write unit-test, analyze
+                        stories, demo.
+                      </li>
+                      <li>Implement API, write automation test.</li>
+                    </ul>
                   </li>
                 </ul>
               </li>
@@ -130,15 +149,13 @@ const About = () => {
                     Techniques: Angular 8, RxJS, Observable, CSS, Jasmine.
                   </li>
                   <li>
-                    Roles: Implement features, fix bug, write unit-test, analyze
-                    stories.
+                    Responsibilities: Implement features, fix bugs, write
+                    unit-test, analyze stories.
                   </li>
                 </ul>
               </li>
             </ul>
           </JobCard>
-        </Row>
-        <Row>
           <Card title='Activities' subTitle='technical'>
             <ul>
               <li>Unit-test technical sharing 2022</li>
@@ -146,22 +163,6 @@ const About = () => {
               <li>Seeking ideas about GIS contest 2016</li>
             </ul>
           </Card>
-          <JobCard
-            title='internship'
-            time={['03/2016', '05/2016']}
-            company='global cypersoft jsc'
-          >
-            <ul>
-              <li>
-                Was training and self-study some java technologies: Java, Spring
-                Web MVC, Hibernate
-              </li>
-              <li>
-                Worked in team of 6 to add feature to a HR management
-                application.
-              </li>
-            </ul>
-          </JobCard>
         </Row>
         <Row>
           <Card title='Interests'>
@@ -177,7 +178,7 @@ const About = () => {
           <Card title='References'>
             <ul>
               <li>
-                A project for practicing React 16 technique:{' '}
+                Todo Project:{' '}
                 <a href='https://github.com/thaoho21294/react-redux-demo'>
                   react-redux-demo
                 </a>

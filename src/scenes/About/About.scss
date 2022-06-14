@@ -1,5 +1,5 @@
-$paddingLeft: 2em;
-$paddingRight: 2em;
+$paddingLeft: 1.5em;
+$paddingRight: 1.5em;
 
 .about {
   position: relative;
@@ -44,8 +44,6 @@ $paddingRight: 2em;
   > .content {
     color: unset;
     margin-top: 2em;
-    padding-left: $paddingLeft;
-    padding-right: $paddingRight;
     font-size: 1rem;
 
     .contact {
