@@ -12,5 +12,13 @@ const HOTKEYS = {
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 const PARAGRAPH_STYLES = ['h1', 'h2', 'h3', 'h4', 'paragraph', 'multiple']
+const CODE_STYLES = ['code']
 
-export { BLOG_API, TEXT_ALIGN_TYPES, HOTKEYS, LIST_TYPES, PARAGRAPH_STYLES }
+export {
+  BLOG_API,
+  TEXT_ALIGN_TYPES,
+  HOTKEYS,
+  LIST_TYPES,
+  PARAGRAPH_STYLES,
+  CODE_STYLES,
+}

@@ -64,6 +64,8 @@ const Element = ({ attributes, children, element }) => {
           {children}
         </Code>
       )
+    case 'code-line':
+      return <div>{children}</div>
     default:
       return (
         <p style={style} {...attributes}>

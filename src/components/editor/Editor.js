@@ -1,6 +1,7 @@
-import React, { useMemo, useCallback, useEffect } from 'react'
+import React, { useMemo, useCallback, useEffect, useRef } from 'react'
 import { Editable, Slate, withReact } from 'slate-react'
-import { createEditor } from 'slate'
+import { createEditor, Text } from 'slate'
+import Prism from 'prismjs'
 import isHotkey from 'is-hotkey'
 import {
   BlockButton,
@@ -17,6 +18,40 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
   const editor = useMemo(() => withReact(createEditor()), [])
   const renderElement = useCallback((props) => <Element {...props} />, [])
   const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
+
+  const codeLineRef = useRef(false)
+
+  const decorate = useCallback(([node, path]) => {
+    const ranges = []
+    if (node.type === 'code-line') {
+      codeLineRef.current = true
+    }
+
+    if (!codeLineRef.current || !Text.isText(node)) {
+      return ranges
+    }
+
+    // TODO: allow to change language
+    const tokens = Prism.tokenize(node.text, Prism.languages.javascript)
+    let start = 0
+
+    for (const token of tokens) {
+      const length = getLength(token)
+      const end = start + length
+
+      if (typeof token !== 'string') {
+        ranges.push({
+          [token.type]: true,
+          anchor: { path, offset: start },
+          focus: { path, offset: end },
+        })
+      }
+
+      start = end
+    }
+    codeLineRef.current = false
+    return ranges
+  }, [])
 
   useEffect(() => {
     editor.children = content
@@ -47,6 +82,7 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
         placeholder='Enter the title...'
         spellCheck
         autoFocus
+        decorate={decorate}
         readOnly={readOnly}
         onKeyDown={(event) => {
           for (const hotkey in HOTKEYS) {
@@ -60,6 +96,16 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
       />
     </Slate>
   )
+}
+
+const getLength = (token) => {
+  if (typeof token === 'string') {
+    return token.length
+  } else if (typeof token.content === 'string') {
+    return token.content.length
+  } else {
+    return token.content.reduce((l, t) => l + getLength(t), 0)
+  }
 }
 
 export default Editor

@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react'
-import Prism from 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
+import React from 'react'
+import 'prismjs/themes/prism.css'
+// import 'prismjs/themes/prism-tomorrow.css'
 
 const Code = React.forwardRef(({ language, children, ...attributes }, ref) => {
-  useEffect(() => {
-    // TODO: Fix bug
-    Prism.highlightAll()
-  }, [])
-
   return (
-    <pre>
+    <pre className={`language-${language}`}>
       <code className={`language-${language}`} ref={ref} {...attributes}>
         {children}
       </code>

@@ -1,5 +1,5 @@
 import { Editor, Transforms, Element as SlateElement, Range } from 'slate'
-import { TEXT_ALIGN_TYPES, LIST_TYPES } from '../constants'
+import { TEXT_ALIGN_TYPES, LIST_TYPES, CODE_STYLES } from '../constants'
 
 export function getActiveStyles(editor) {
   return new Set(Object.keys(Editor.marks(editor) ?? {}))
@@ -52,29 +52,42 @@ export const toggleBlock = (editor, format) => {
     format,
     TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type',
   )
+
   const isList = LIST_TYPES.includes(format)
+  const isCode = CODE_STYLES.includes(format)
 
   Transforms.unwrapNodes(editor, {
     match: (n) =>
       !Editor.isEditor(n) &&
       SlateElement.isElement(n) &&
-      LIST_TYPES.includes(n.type) &&
+      (LIST_TYPES.includes(n.type) || CODE_STYLES.includes(n.type)) &&
       !TEXT_ALIGN_TYPES.includes(format),
     split: true,
   })
+
   let newProperties
   if (TEXT_ALIGN_TYPES.includes(format)) {
     newProperties = {
       align: isActive ? undefined : format,
     }
   } else {
+    let type = format
+    // if removing format, set it back to default type - paragraph
+    if (isActive) {
+      type = 'paragraph'
+    } else {
+      // node should be a item (<li />) if their parrent is a list
+      // node should be a block if their parrent is a code line
+      type = isList ? 'list-item' : isCode ? 'code-line' : type
+    }
+
     newProperties = {
-      type: isActive ? 'paragraph' : isList ? 'list-item' : format,
+      type,
     }
   }
   Transforms.setNodes(editor, newProperties)
 
-  if (!isActive && isList) {
+  if (!isActive && (isList || isCode)) {
     const block = { type: format, children: [] }
     Transforms.wrapNodes(editor, block)
   }
