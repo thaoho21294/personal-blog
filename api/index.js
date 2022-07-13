@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const router = express.Router()
 const mongoose = require('mongoose')
+// const usersRouter = require('./routes/users')
+// const postRouter = require('./routes/posts')
 
 require('dotenv').config()
 
@@ -17,6 +20,9 @@ router.get('/', async (req, res) => {
   }
 })
 
+app.use(cors())
+app.use(express.json())
+
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, autoIndex: true })
 
@@ -25,9 +31,11 @@ connection.once('open', () => {
   console.log('MongoDB database connection established successfully')
 })
 
-app.use(express.json({ extended: false }))
+// app.use(express.json({ extended: false }))
 
 app.use('/product', router)
+// app.use('/users', usersRouter)
+// app.use('/posts', postRouter)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`))
