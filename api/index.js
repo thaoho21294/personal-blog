@@ -3,8 +3,8 @@ const app = express()
 const cors = require('cors')
 const router = express.Router()
 const mongoose = require('mongoose')
-// const usersRouter = require('./routes/users')
-// const postRouter = require('./routes/posts')
+const usersRouter = require('./routes/users')
+const postRouter = require('./routes/posts')
 
 require('dotenv').config()
 
@@ -34,8 +34,8 @@ connection.once('open', () => {
 // app.use(express.json({ extended: false }))
 
 app.use('/product', router)
-// app.use('/users', usersRouter)
-// app.use('/posts', postRouter)
+app.use('/users', usersRouter)
+app.use('/posts', postRouter)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`))
