@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/css'
+import CodeLeaf from './CodeLeaf'
 
 const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {
@@ -15,52 +15,9 @@ const Leaf = ({ attributes, children, leaf }) => {
   }
 
   return (
-    <span
-      {...attributes}
-      className={css`
-        ${leaf.comment &&
-        css`
-          color: slategray;
-        `}
-
-        ${(leaf.operator || leaf.url) &&
-        css`
-          color: #9a6e3a;
-        `}
-        ${leaf.keyword &&
-        css`
-          color: #07a;
-        `}
-        ${(leaf.variable || leaf.regex) &&
-        css`
-          color: #e90;
-        `}
-        ${(leaf.number ||
-          leaf.boolean ||
-          leaf.tag ||
-          leaf.constant ||
-          leaf.symbol ||
-          leaf['attr-name'] ||
-          leaf.selector) &&
-        css`
-          color: #905;
-        `}
-        ${leaf.punctuation &&
-        css`
-          color: #999;
-        `}
-        ${(leaf.string || leaf.char) &&
-        css`
-          color: #690;
-        `}
-        ${(leaf.function || leaf['class-name']) &&
-        css`
-          color: #dd4a68;
-        `}
-      `}
-    >
+    <CodeLeaf attributes={attributes} type={leaf.type}>
       {children}
-    </span>
+    </CodeLeaf>
   )
 }
 

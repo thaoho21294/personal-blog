@@ -41,7 +41,7 @@ const Editor = ({ content, onChange, readOnly, forceUpdate }) => {
 
       if (typeof token !== 'string') {
         ranges.push({
-          [token.type]: true,
+          type: token.type,
           anchor: { path, offset: start },
           focus: { path, offset: end },
         })
