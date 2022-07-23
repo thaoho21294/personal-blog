@@ -2,8 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './scenes/Login'
 import Home from './scenes/Home'
-
-// TODO: explore why path array doesn't work
+import Resume from './scenes/Resume/Resume'
 
 function App() {
   return (
@@ -12,6 +11,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/*' element={<Home />} />
         <Route path='/logout' element={<Login />} />
+        <Route path='resume' element={<Resume />} />
       </Routes>
     </BrowserRouter>
   )

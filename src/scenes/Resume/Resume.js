@@ -1,14 +1,14 @@
 import React from 'react'
 import { LocationOn, Phone, Email, Cloud } from '@mui/icons-material'
-import './About.scss'
+import './Resume.scss'
 import me from '../../assets/me.jpg'
-import Row from 'scenes/About/components/Row'
+import Row from 'scenes/Resume/components/Row'
 import Card from './components/Card'
 import JobCard from './components/JobCard'
 
-const About = () => {
+const Resume = () => {
   return (
-    <div className='medium-container about'>
+    <div className='medium-container resume'>
       <div className='header'>
         <div className='name'>
           <span className='firstname'>Thao</span> Ho
@@ -203,4 +203,4 @@ const About = () => {
   )
 }
 
-export default About
+export default Resume

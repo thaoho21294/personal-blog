@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from 'components/navbar/Navbar'
 import Posts from './Posts'
 import Post from './Post'
-import About from './About/About'
+import About from './About'
 import './Home.scss'
 
 // TODO: explore why path array doesn't work
