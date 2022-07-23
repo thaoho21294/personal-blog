@@ -65,6 +65,3 @@ Edit Post
 
 View Post
 <img alt="view-post" src="./resources/view.png" />
-
-About Page
-<img alt="about-page" src='./resources/about.png'/>
