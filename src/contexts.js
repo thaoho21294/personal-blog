@@ -1,3 +1,13 @@
-import { createContext } from 'react'
+const getUser = () => {
+  return localStorage.getItem('user')
+}
 
-export const UserInfo = createContext()
+const setUser = (username) => {
+  localStorage.setItem('user', username)
+}
+
+const removeUser = () => {
+  localStorage.removeItem('user')
+}
+
+export { getUser, setUser, removeUser }

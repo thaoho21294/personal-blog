@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { BLOG_API } from '../constants'
 import Editor from 'components/editor/Editor'
 import { Button } from '@mui/material'
 import { getTitle } from 'utils'
-import { UserInfo } from '../contexts'
+import { getUser } from '../contexts'
 
 const defaultContent = [
   {
@@ -21,7 +21,6 @@ const Post = () => {
   const [content, setContent] = useState([])
   const [forceUpdate, setForceUpdate] = useState(0)
   const [originalContent, setOriginalContent] = useState()
-  const { user } = useContext(UserInfo)
 
   useEffect(() => {
     if (!id) {
@@ -70,7 +69,7 @@ const Post = () => {
   return (
     <div className='small-container'>
       <div style={{ marginTop: '20px', textAlign: 'right' }}>
-        {!editing && user && (
+        {!editing && getUser() && (
           <Button
             onClick={() => {
               setEditing(true)

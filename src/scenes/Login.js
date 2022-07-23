@@ -1,14 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useMatch, useNavigate } from 'react-router-dom'
 import { TextField, Button } from '@mui/material'
 import { BLOG_API } from '../constants'
-import { UserInfo } from '../contexts'
+import { getUser, removeUser, setUser } from '../contexts'
 import './Login.scss'
 
 const Login = () => {
   const navigate = useNavigate()
-  const { setUser } = useContext(UserInfo)
+  const isLogout = useMatch('/logout')
+
+  useEffect(() => {
+    if (isLogout) {
+      removeUser()
+      navigate('/')
+    }
+
+    if (getUser()) {
+      navigate('/')
+    }
+  }, [])
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
@@ -18,7 +29,7 @@ const Login = () => {
         password: evt.target.password.value,
       })
       .then((response) => {
-        setUser(response.data)
+        setUser(response.data.username)
         navigate('/')
       })
       .catch((err) => {

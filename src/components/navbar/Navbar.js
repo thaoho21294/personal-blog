@@ -1,18 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { getUser } from '../../contexts'
 import './Navbar.scss'
-import { UserInfo } from '../../contexts'
 
 const Navbar = () => {
-  const { user } = useContext(UserInfo)
-
   return (
     <nav className='small-container'>
       <ol>
         <li>
           <Link to='/'>all posts</Link>
         </li>
-        {user && (
+        {getUser() && (
           <li>
             <Link to='/posts/create'>create post</Link>
           </li>
