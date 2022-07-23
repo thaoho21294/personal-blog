@@ -30,7 +30,7 @@ const Posts = () => {
       {posts.map((post) => {
         return (
           <div key={post._id} style={{ marginTop: '2.37rem' }}>
-            <Link to={`/post/${post._id}`}>
+            <Link to={`/posts/${post._id}`}>
               <h3 className='title'>{post.title}</h3>
             </Link>
           </div>

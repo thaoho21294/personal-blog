@@ -1,19 +1,27 @@
 const router = require('express').Router()
-let User = require('../models/user.model')
+const User = require('../models/user.model')
 
 router.route('/').get((req, res) => {
-    User.find()
-        .then(users => res.json(users))
-        .catch(err => res.status(400).json('Error:' + err))
+  User.find()
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json('Error:' + err))
+})
+
+router.route('/login').post((req, res) => {
+  User.findOne({ username: req.body.username, password: req.body.password })
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error:' + err))
 })
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username
-    const newUser = new User({ username })
+  const username = req.body.username
+  const password = req.body.password
+  const newUser = new User({ username, password })
 
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch((err) => res.status(400).json('Error: ' + err))
+  newUser
+    .save()
+    .then(() => res.json('User added!'))
+    .catch((err) => res.status(400).json('Error: ' + err))
 })
 
-module.exports = router;
+module.exports = router

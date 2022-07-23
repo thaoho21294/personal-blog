@@ -1,30 +1,23 @@
-import React from 'react'
-import './App.scss'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from 'components/navbar/Navbar'
-import Posts from './scenes/Posts'
-import Post from './scenes/Post'
-import About from 'scenes/About/About'
+import Login from './scenes/Login'
+import Home from './scenes/Home'
+import { UserInfo } from './contexts'
 
 // TODO: explore why path array doesn't work
 
 function App() {
+  const [user, setUser] = useState()
+
   return (
-    <BrowserRouter>
-      <div className='app'>
-        <header>
-          <h1 className='brand'>Thao Ho Blog</h1>
-        </header>
-        <Navbar />
+    <UserInfo.Provider value={{ user, setUser }}>
+      <BrowserRouter>
         <Routes>
-          <Route path='/post/:id' element={<Post />} />
-          <Route path='/post/create' element={<Post />} />
-          <Route path='/post/edit/:id' element={<Post />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/' element={<Posts />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/*' element={<Home />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserInfo.Provider>
   )
 }
 
