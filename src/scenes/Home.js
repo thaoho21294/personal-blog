@@ -1,5 +1,7 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useMatch } from 'react-router-dom'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import GitHubIcon from '@mui/icons-material/GitHub'
 import Navbar from 'components/navbar/Navbar'
 import Posts from './Posts'
 import Post from './Post'
@@ -9,6 +11,8 @@ import './Home.scss'
 // TODO: explore why path array doesn't work
 
 function Home() {
+  const isCreating = useMatch('/posts/create')
+
   return (
     <div className='home'>
       <header>
@@ -22,6 +26,19 @@ function Home() {
         <Route path='/about' element={<About />} />
         <Route index element={<Posts />} />
       </Routes>
+      {!isCreating && (
+        <footer className='small-container'>
+          <a
+            href='https://www.linkedin.com/in/thao-ho-b8024690'
+            className='link-group'
+          >
+            <LinkedInIcon /> Linkedin
+          </a>
+          <a href='https://github.com/thaoho21294' className='link-group'>
+            <GitHubIcon /> Github
+          </a>
+        </footer>
+      )}
     </div>
   )
 }

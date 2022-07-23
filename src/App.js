@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './scenes/Login'
 import Home from './scenes/Home'
 import Resume from './scenes/Resume/Resume'
+import './App.scss'
 
 function App() {
   return (

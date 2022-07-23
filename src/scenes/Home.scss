@@ -19,18 +19,6 @@ header {
   padding: 2.37rem 1.185rem;
 }
 
-.small-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 45rem;
-}
-
-.medium-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 60rem;
-}
-
 .MuiFormControl-root {
   margin: 0 !important;
 }
@@ -46,5 +34,15 @@ header {
   page-break-before: always;
   @media print {
     margin-top: 1rem;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  .link-group {
+    display: flex;
+    align-items: center;
   }
 }
