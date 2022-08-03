@@ -37,9 +37,7 @@ const Resume = () => {
             React working on various projects from both American, Singapore
             customers. Strong experience in Front-end technique but also worked
             with Back-end. For now, I want to become a proficient senior
-            front-end engineer who can propose good solutions and mentor
-            juniors. In the next 5 years, I want to become a technical
-            architect.
+            front-end engineer who can propose good solutions and good codes.
           </Card>
         </Row>
         <Row>
@@ -59,18 +57,17 @@ const Resume = () => {
               time={['06/2020', '06/2022']}
               company='S3 Corp'
             >
-              Worked directly with Singaporean developers, product owners on 2
-              projects, tenant and energy management, which have forms, tables,
-              charts.
+              Worked directly with Singaporean developers, product owners,
+              designers, on 2 projects, tenant and energy management, which have
+              forms, tables, charts.
               <ul>
                 <li>
                   Techniques:
                   <ul>
                     <li>
-                      FE: React 16, redux, redux-thunk, single-spa
-                      (micro-frontend), typescript, redux-toolkit, docker,
-                      webpack, formik, e-chart, react-table, xlsx,
-                      react-testing-library.
+                      FE: React 16, redux, redux-thunk, typescript, single-spa
+                      (micro-frontend) redux-toolkit, docker, webpack, formik,
+                      e-chart, react-table, xlsx, react-testing-library.
                     </li>
                     <li>BE: golang, graphQL, postgresql.</li>
                     <li>E2E: Cypress.</li>
