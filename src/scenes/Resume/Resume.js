@@ -37,7 +37,7 @@ const Resume = () => {
             React working on various projects from both American, Singapore
             customers. Strong experience in Front-end technique but also worked
             with Back-end. For now, I want to become a proficient senior
-            front-end engineer who can propose good solutions and good codes.
+            front-end engineer who can propose good solutions and write high-quality codes.
           </Card>
         </Row>
         <Row>
