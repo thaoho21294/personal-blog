@@ -13,7 +13,7 @@ const Resume = () => {
         <div className='name'>
           <span className='firstname'>Thao</span> Ho
         </div>
-        <div className='role'>senior frontend developer</div>
+        <div className='role'>middle frontend developer</div>
       </div>
       <img className='avatar' src={me}></img>
       <div className='content'>
@@ -37,7 +37,8 @@ const Resume = () => {
             React working on various projects from both American, Singapore
             customers. Strong experience in Front-end technique but also worked
             with Back-end. For now, I want to become a proficient senior
-            front-end engineer who can propose good solutions and write high-quality codes.
+            front-end engineer who can propose good solutions and write
+            high-quality codes.
           </Card>
         </Row>
         <Row>
