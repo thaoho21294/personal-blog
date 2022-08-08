@@ -2,7 +2,7 @@ import React from 'react'
 import { LocationOn, Phone, Email, Cloud } from '@mui/icons-material'
 import './Resume.scss'
 import me from '../../assets/me.jpg'
-import Row from 'components/row/Row'
+import Row from 'components/row'
 import Card from 'components/card'
 import JobCard from 'components/job-card'
 
