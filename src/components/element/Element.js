@@ -1,5 +1,5 @@
 import React from 'react'
-import Code from '../code/Code'
+import Code from 'components/code'
 
 const Element = ({ attributes, children, element }) => {
   const style = { textAlign: element.align }
