@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { BLOG_API } from '../constants'
+import { BLOG_API } from '../../constants'
 import Editor from 'components/editor/Editor'
 import { Button } from '@mui/material'
 import { getTitle } from 'utils'
-import { getUser } from '../contexts'
+import { getUser } from '../../contexts'
 
 const defaultContent = [
   {

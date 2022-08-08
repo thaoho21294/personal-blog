@@ -3,14 +3,12 @@ import { Editable, Slate, withReact } from 'slate-react'
 import { createEditor, Text } from 'slate'
 import Prism from 'prismjs'
 import isHotkey from 'is-hotkey'
-import {
-  BlockButton,
-  MarkButton,
-  Toolbar,
-  Element,
-  Leaf,
-  BlockTypeSelect,
-} from './components'
+import BlockButton from './BlockButton'
+import MarkButton from './MarkButton'
+import BlockTypeSelect from './BlockTypeSelect'
+import Toolbar from 'components/toolbar'
+import Element from 'components/element'
+import Leaf from 'components/leaf'
 import { HOTKEYS } from '../../constants'
 import { toggleMark } from 'utils/editor'
 

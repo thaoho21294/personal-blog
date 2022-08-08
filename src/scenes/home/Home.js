@@ -3,9 +3,9 @@ import { Routes, Route, useMatch } from 'react-router-dom'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import Navbar from 'components/navbar/Navbar'
-import Posts from './Posts'
-import Post from './Post'
-import About from './About'
+import Posts from 'scenes/posts'
+import Post from 'scenes/post'
+import About from 'scenes/about'
 import './Home.scss'
 
 // TODO: explore why path array doesn't work

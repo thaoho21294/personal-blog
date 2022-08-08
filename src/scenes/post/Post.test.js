@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { waitFor, screen, fireEvent } from '@testing-library/react'
-import { BLOG_API } from '../constants'
-import { renderWithRouter } from '../testUtils'
+import { BLOG_API } from '../../constants'
+import { renderWithRouter } from '../../testUtils'
 import Post from './Post'
 
 jest.mock('axios')

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { BLOG_API } from '../constants'
+import { BLOG_API } from '../../constants'
 
 const Posts = () => {
   const [posts, setPosts] = useState([])
