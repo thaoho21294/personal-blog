@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from 'scenes/login'
 import Home from 'scenes/home'
-import Resume from './scenes/resume'
+import Resume from 'scenes/resume_test'
 import './App.scss'
 
 function App() {
