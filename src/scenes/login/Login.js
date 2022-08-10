@@ -5,17 +5,9 @@ import { TextField, Button, Alert } from '@mui/material'
 import { BLOG_API } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
 import './Login.scss'
-import * as yup from 'yup'
+import loginValidationSchema from 'schema/loginValidationSchema'
 import { useFormik } from 'formik'
-import LoadingSprinner from 'components/loading-spinner'
-
-const validationSchema = yup.object({
-  username: yup.string().required('Username is required'),
-  password: yup
-    .string()
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
-})
+import LoadingSpinner from 'components/loading-spinner'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -72,7 +64,7 @@ const Login = () => {
       username: '',
       password: '',
     },
-    validationSchema,
+    validationSchema: loginValidationSchema,
     onSubmit,
   })
 
@@ -80,7 +72,7 @@ const Login = () => {
 
   return (
     <div className='login-container'>
-      {loading && <LoadingSprinner />}
+      {loading && <LoadingSpinner />}
       <form className='login-form' onSubmit={handleSubmit}>
         {error && <Alert severity='error'>{error}</Alert>}
         <TextField
