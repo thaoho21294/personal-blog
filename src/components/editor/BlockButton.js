@@ -6,9 +6,7 @@ import { isBlockActive, toggleBlock } from 'utils/editor'
 import { TEXT_ALIGN_TYPES } from '../../constants'
 
 const BlockButton = ({ format, icon }) => {
-  const editor = 
-  
-  useSlate()
+  const editor = useSlate()
   return (
     <Button
       active={isBlockActive(
