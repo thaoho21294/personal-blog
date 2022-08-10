@@ -2,9 +2,9 @@ import React from 'react'
 import { LocationOn, Phone, Email, Cloud } from '@mui/icons-material'
 import './Resume.scss'
 import me from '../../assets/me.jpg'
-import Row from 'scenes/Resume/components/Row'
-import Card from './components/Card'
-import JobCard from './components/JobCard'
+import Row from 'components/row'
+import Card from 'components/card'
+import JobCard from 'components/job-card'
 
 const Resume = () => {
   return (

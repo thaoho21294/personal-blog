@@ -1,5 +1,5 @@
 import React from 'react'
-import CodeLeaf from './CodeLeaf'
+import CodeLeaf from 'components/code-leaf'
 
 const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSlate } from 'slate-react'
-import Button from './Button'
-import Icon from './Icon'
+import Button from 'components/button'
+import Icon from 'components/icon'
 import { isMarkActive, toggleMark } from 'utils/editor'
 
 const MarkButton = ({ format, icon }) => {

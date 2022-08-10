@@ -41,6 +41,12 @@
     "comma-dangle": "off",
     "indent": "off",
     "react/prop-types": "warn",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }

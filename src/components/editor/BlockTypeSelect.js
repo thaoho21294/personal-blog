@@ -3,7 +3,7 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import { useSlate } from 'slate-react'
-import { PARAGRAPH_STYLES } from '../../../constants'
+import { PARAGRAPH_STYLES } from '../../constants'
 import { toggleBlockType, getTextBlockStyle } from 'utils/editor'
 
 export default function BlockTypeSelect() {
