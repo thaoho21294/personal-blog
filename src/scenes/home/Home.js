@@ -2,11 +2,11 @@ import React from 'react'
 import { Routes, Route, useMatch } from 'react-router-dom'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import Navbar from 'components/navbar/Navbar'
 import Posts from 'scenes/posts'
 import Post from 'scenes/post'
 import About from 'scenes/about'
 import './Home.scss'
+import Header from 'components/header'
 
 // TODO: explore why path array doesn't work
 
@@ -15,10 +15,7 @@ function Home() {
 
   return (
     <div className='home'>
-      <header>
-        <h1 className='brand'>Thao Ho Blog</h1>
-      </header>
-      <Navbar />
+      <Header />
       <Routes>
         <Route path='posts' element={<Posts />} />
         <Route path='posts/:id' element={<Post />} />
