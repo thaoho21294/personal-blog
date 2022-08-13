@@ -13,7 +13,7 @@ const Resume = () => {
         <div className='name'>
           <span className='firstname'>Thao</span> Ho
         </div>
-        <div className='role'>middle frontend developer</div>
+        <div className='role'>senior frontend developer</div>
       </div>
       <img className='avatar' src={me}></img>
       <div className='content'>
