@@ -30,6 +30,7 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
     },
+    devtool: isDevelopment ? 'source-map' : false,
     module: {
       rules: [
         {

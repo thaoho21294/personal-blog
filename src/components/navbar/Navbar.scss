@@ -12,5 +12,9 @@ nav {
       text-decoration: none;
       text-transform: uppercase;
     }
+    
+    &.active {
+      border-bottom: 3px solid black;
+    }
   }
 }

@@ -13,7 +13,7 @@ const Header = () => {
         ) : (
           <>
             <AccountCircleIcon className='icon' fontSize='large' />
-            {user} | <a href='/logout'> Logout</a>
+            {user.username} | <a href='/logout'> Logout</a>
           </>
         )}
       </div>

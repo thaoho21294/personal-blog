@@ -45,6 +45,8 @@ const Post = () => {
     }
   }, [])
 
+  const user = getUser()
+
   const onSubmit = () => {
     const title = getTitle(content)
     if (id) {
@@ -52,7 +54,7 @@ const Post = () => {
         .post(`${BLOG_API}/posts/update/${id}`, {
           title,
           content,
-          username: 'thaoho',
+          username: user.username,
         })
         .then((res) => console.log(res.data))
     } else {
@@ -60,7 +62,7 @@ const Post = () => {
         .post(`${BLOG_API}/posts/add`, {
           title,
           content,
-          username: 'thaoho',
+          username: user.username,
         })
         .then((res) => console.log(res.data))
     }
@@ -69,7 +71,7 @@ const Post = () => {
   return (
     <div className='small-container'>
       <div style={{ marginTop: '20px', textAlign: 'right' }}>
-        {!editing && getUser() && (
+        {!editing && user && (
           <Button
             onClick={() => {
               setEditing(true)

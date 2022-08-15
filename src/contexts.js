@@ -1,9 +1,9 @@
 const getUser = () => {
-  return localStorage.getItem('user')
+  return JSON.parse(localStorage.getItem('user'))
 }
 
-const setUser = (username) => {
-  localStorage.setItem('user', username)
+const setUser = (user) => {
+  localStorage.setItem('user', JSON.stringify(user))
 }
 
 const removeUser = () => {
