@@ -7,6 +7,7 @@ import Post from 'scenes/post'
 import About from 'scenes/about'
 import './Home.scss'
 import Header from 'components/header'
+import Navbar from 'components/navbar'
 
 // TODO: explore why path array doesn't work
 
@@ -16,6 +17,7 @@ function Home() {
   return (
     <div className='home'>
       <Header />
+      <Navbar />
       <Routes>
         <Route path='posts' element={<Posts />} />
         <Route path='posts/:id' element={<Post />} />

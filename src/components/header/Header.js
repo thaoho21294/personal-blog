@@ -1,4 +1,3 @@
-import Navbar from 'components/navbar'
 import { getUser } from 'contexts'
 import React from 'react'
 import './Header.scss'
@@ -21,7 +20,6 @@ const Header = () => {
       <header>
         <h1 className='brand'>Thao Ho Blog</h1>
       </header>
-      <Navbar user={user} />
     </div>
   )
 }
