@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getUser } from '../../contexts'
 import './Navbar.scss'
+import { getUser } from 'contexts'
 
 const Navbar = () => {
   return (
