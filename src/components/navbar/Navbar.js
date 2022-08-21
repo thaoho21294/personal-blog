@@ -3,10 +3,10 @@ import { Link, useMatch } from 'react-router-dom'
 import './Navbar.scss'
 import { FEATURES } from '../../constants'
 import classNames from 'classnames'
-import usePermission from 'hooks/usePermission'
+import { getPermission } from 'utils/permission'
 
 const Navbar = () => {
-  const { canCreate } = usePermission()
+  const { canCreate } = getPermission()
   return (
     <nav className='small-container'>
       <ol>
