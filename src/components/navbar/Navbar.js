@@ -1,23 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useMatch } from 'react-router-dom'
 import './Navbar.scss'
-import { getUser } from 'contexts'
+import { FEATURES } from '../../constants'
+import classNames from 'classnames'
+import { getPermission } from 'utils/permission'
 
 const Navbar = () => {
+  const { canCreate } = getPermission()
   return (
     <nav className='small-container'>
       <ol>
-        <li>
-          <Link to='/'>all posts</Link>
-        </li>
-        {getUser() && (
-          <li>
-            <Link to='/posts/create'>create post</Link>
-          </li>
-        )}
-        <li>
-          <Link to='/about'>about</Link>
-        </li>
+        {FEATURES.map((feature, index) => {
+          const isEnable = feature.needAuthentication
+            ? canCreate()
+            : !feature.needAuthentication
+
+          return (
+            isEnable && (
+              <li
+                key={index}
+                className={classNames({
+                  active: useMatch(feature.path),
+                })}
+              >
+                <Link to={feature.path}>{feature.label}</Link>
+              </li>
+            )
+          )
+        })}
       </ol>
     </nav>
   )

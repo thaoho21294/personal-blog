@@ -16,6 +16,16 @@ const userSchema = new Schema(
       trim: true,
       minlength: 5,
     },
+    role: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    permission: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,

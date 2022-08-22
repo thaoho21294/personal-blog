@@ -24,7 +24,7 @@ const Login = () => {
     if (getUser()) {
       navigate('/')
     }
-  }, [])
+  }, [isLogout])
 
   const handleSubmitException = () => {
     setLoading(false)
@@ -48,7 +48,11 @@ const Login = () => {
         }
         // fake timer
         setTimeout(() => {
-          setUser(response.data.username)
+          setUser({
+            username: response.data.username,
+            permission: response.data.permission,
+            role: response.data.role,
+          })
           setLoading(false)
           navigate('/')
         }, 2000)

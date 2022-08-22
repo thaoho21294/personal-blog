@@ -11,8 +11,8 @@
   flex-direction: column;
   background: white;
   padding: 20px;
-}
 
-.login-form .form__custom-button {
-  margin-top: 50px;
+  &.form__custom-button {
+    margin-top: 50px;
+  }
 }
